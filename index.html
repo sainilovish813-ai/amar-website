@@ -253,6 +253,33 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
  *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
  .reveal{opacity:1;transform:none}
 }
+
+/* CLICK-TO-CALL FLOATING BUTTON */
+.call-fab{
+  position:fixed;right:22px;bottom:22px;z-index:1200;
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,#22c55e,#16a34a);color:#fff;
+  display:grid;place-items:center;
+  box-shadow:0 16px 36px rgba(22,163,74,.38);
+  transition:.3s ease;
+}
+.call-fab:hover{transform:translateY(-3px) scale(1.05)}
+.call-fab svg{width:26px;height:26px}
+.call-fab-ring{
+  position:absolute;inset:-9px;border-radius:50%;
+  border:2px solid rgba(34,197,94,.45);
+  animation:call-pulse 2.2s ease-out infinite;
+  pointer-events:none;
+}
+@keyframes call-pulse{
+  0%{transform:scale(.82);opacity:.9}
+  70%{transform:scale(1.35);opacity:0}
+  100%{opacity:0}
+}
+@media(max-width:620px){
+  .call-fab{right:16px;bottom:16px;width:52px;height:52px}
+  .call-fab svg{width:22px;height:22px}
+}
 </style>
 </head>
 <body>
@@ -269,6 +296,11 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#home">Home</a><a href="#about">About</a><a href="#routes">Routes</a><a href="#fleet">Fleet</a><a href="#services">Services</a><a href="#booking">Booking</a><a href="#contact">Contact</a>
 </div>
+
+<a class="call-fab" href="tel:+919991535961" aria-label="Call Amar Travels">
+  <span class="call-fab-ring"></span>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2Z" fill="currentColor"/></svg>
+</a>
 
 <main>
 <section class="hero" id="home">
