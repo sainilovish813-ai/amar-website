@@ -32,6 +32,7 @@ h3{font-size:25px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:15px 23px;font-weight:700;transition:.35s ease;cursor:pointer}
 .btn-primary{background:var(--blue);color:#fff;box-shadow:0 15px 35px rgba(22,72,199,.22)}
 .btn-primary:hover{transform:translateY(-3px);background:#103aa3}
+.btn-primary:disabled{opacity:.65;cursor:not-allowed;transform:none}
 .btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .btn-light:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 .glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 60px rgba(15,32,65,.10);backdrop-filter:blur(18px)}
@@ -143,6 +144,7 @@ input,select,textarea{width:100%;padding:14px 15px;border:1px solid var(--line);
 input:focus,select:focus,textarea:focus{border-color:#7fa1e9;box-shadow:0 0 0 4px rgba(22,72,199,.08)}
 textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
 .msg{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#e9f8f5;color:#137c73;font-weight:700;font-size:13px}.msg.show{display:block}
+.msg.error{background:#fdeceb;color:#b3261e}
 .testimonial{display:flex;flex-direction:column;gap:16px}.stars{color:#e1a02e;letter-spacing:2px}
 .cta{padding:90px 30px;text-align:center;background:linear-gradient(135deg,#102e73,#1648c7 55%,#159aa4);color:#fff;border-radius:34px;box-shadow:var(--shadow)}
 .cta p{color:rgba(255,255,255,.78);max-width:570px;margin:16px auto 25px}
@@ -388,6 +390,10 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
 <div class="container form-wrap">
  <div class="reveal"><div class="eyebrow">Book / Enquire</div><h2>Tell us where you’re going.</h2><p class="lead" style="margin-top:18px">Send your journey details and the Amar Travels desk can follow up with availability and booking information.</p><div style="margin-top:25px" class="card"><b>Tip</b><p style="color:var(--muted);margin-top:6px">Choose a route above to automatically fill the From and To fields.</p></div></div>
  <form class="form reveal" id="bookingForm">
+  <input type="hidden" name="access_key" value="aada3ecd-b2b5-4942-a976-38940a8645f1">
+  <input type="hidden" name="subject" value="New Travel Enquiry - Amar Travels Website">
+  <input type="hidden" name="from_name" value="Amar Travels Website">
+  <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
   <div class="fields">
    <div class="field"><label>Full Name</label><input required name="name" placeholder="Your name"></div>
    <div class="field"><label>Phone</label><input required name="phone" inputmode="tel" placeholder="+91"></div>
@@ -484,10 +490,39 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
   }),{rootMargin:'-45% 0px -45% 0px'});
   document.querySelectorAll('main section[id]').forEach(s=>sectionObserver.observe(s));
 
-  document.getElementById('bookingForm').addEventListener('submit',e=>{
+  const bookingForm=document.getElementById('bookingForm');
+  const msgBox=document.getElementById('msg');
+  bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    document.getElementById('msg').classList.add('show');
-    e.target.querySelector('button').textContent='Enquiry Sent ✓';
+    const btn=bookingForm.querySelector('button[type="submit"]');
+    const originalBtnText=btn.textContent;
+    msgBox.classList.remove('show','error');
+    btn.disabled=true;
+    btn.textContent='Sending...';
+
+    try{
+      const formData=new FormData(bookingForm);
+      const response=await fetch('https://api.web3forms.com/submit',{
+        method:'POST',
+        headers:{'Accept':'application/json'},
+        body:formData
+      });
+      const result=await response.json();
+
+      if(result.success){
+        msgBox.textContent='Thank you! Your enquiry has been sent. Amar Travels will contact you shortly.';
+        msgBox.classList.add('show');
+        btn.textContent='Enquiry Sent ✓';
+        bookingForm.reset();
+      } else {
+        throw new Error(result.message || 'Something went wrong');
+      }
+    } catch(err){
+      msgBox.textContent='Sorry, something went wrong. Please try again or contact us directly.';
+      msgBox.classList.add('show','error');
+      btn.disabled=false;
+      btn.textContent=originalBtnText;
+    }
   });
 })();
 </script>
