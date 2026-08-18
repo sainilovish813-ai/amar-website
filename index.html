@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f8fb">
+<meta name="description" content="Amar Travels — premium intercity bus journeys across India.">
+<title>Amar Travels — Safar Suhana Ho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f8fb;--paper:#fff;--ink:#152033;--muted:#667085;--line:#e7eaf0;
+  --blue:#1648c7;--blue2:#2d6cff;--cyan:#19a8b6;--gold:#d89a28;
+  --shadow:0 24px 70px rgba(21,32,51,.12);--r:24px;--max:1180px;
+  --journey:0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none} button,input,select,textarea{font:inherit}
+img,video{display:block;max-width:100%}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+.section{position:relative;padding:110px 0}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:var(--blue);margin-bottom:14px}
+h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.08}
+h1{font-size:clamp(48px,7vw,94px);letter-spacing:-.04em}
+h2{font-size:clamp(36px,4.5vw,62px);letter-spacing:-.03em}
+h3{font-size:25px}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:650px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:15px 23px;font-weight:700;transition:.35s ease;cursor:pointer}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 15px 35px rgba(22,72,199,.22)}
+.btn-primary:hover{transform:translateY(-3px);background:#103aa3}
+.btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-light:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 60px rgba(15,32,65,.10);backdrop-filter:blur(18px)}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.show{opacity:1;transform:none}
+
+/* NAV */
+.nav{position:fixed;z-index:1000;left:0;right:0;top:0;padding:18px 0;transition:.35s}
+.nav.scrolled{background:rgba(247,248,251,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);padding:11px 0}
+.nav-row{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800}
+.brand-mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#1648c7,#19a8b6);display:grid;place-items:center;color:white;font-size:20px;box-shadow:0 10px 25px rgba(22,72,199,.22)}
+.brand-logo{width:58px;height:42px;object-fit:contain;display:block}
+.brand small{display:block;font-size:10px;color:var(--blue);letter-spacing:.16em}
+.nav-links{display:flex;gap:27px;font-size:14px;font-weight:600}
+.nav-links a{position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:var(--blue);transition:.25s}
+.nav-links a:hover:after,.nav-links a.active:after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:13px}
+.mobile-menu{position:fixed;z-index:1100;right:16px;top:72px;width:min(330px,calc(100% - 32px));padding:20px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);display:none}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 4px;border-bottom:1px solid var(--line);font-weight:700}
+
+/* PREMIUM STATIC HERO */
+.hero{
+  min-height:clamp(680px,88vh,860px);
+  padding:132px 0 78px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 84% 22%,rgba(45,108,255,.12),transparent 28%),
+    radial-gradient(circle at 64% 82%,rgba(25,168,182,.10),transparent 25%),
+    linear-gradient(135deg,#f8fafc 0%,#eef4fb 52%,#f7f8fb 100%);
+}
+.hero:after{
+  content:"";position:absolute;inset:auto -10% -34% 35%;height:420px;
+  background:radial-gradient(ellipse,rgba(22,72,199,.10),transparent 65%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:58px;align-items:center;position:relative;z-index:2}
+.hero-copy .eyebrow{display:flex;align-items:center;gap:10px}
+.hero-copy .eyebrow:before{content:"";width:35px;height:2px;background:var(--blue)}
+.hero-copy h1 span{color:var(--blue);font-style:italic}
+.hero-copy .lead{margin-top:22px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-note{margin-top:24px;font-size:12px;color:#5d6879;font-weight:700;display:flex;align-items:center;gap:9px}
+.hero-visual{position:relative;min-height:510px;display:grid;place-items:center}
+.hero-bus-card{
+  width:min(690px,100%);aspect-ratio:1.22/1;border-radius:34px;overflow:hidden;
+  position:relative;box-shadow:0 34px 90px rgba(15,32,65,.22);
+  border:8px solid rgba(255,255,255,.82);background:#152033;
+}
+.hero-bus-card>img{width:100%;height:100%;object-fit:cover}
+.hero-bus-card:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(110deg,rgba(10,23,44,.38),transparent 46%,rgba(10,23,44,.18));
+  pointer-events:none;
+}
+.window-scene{
+  position:absolute;z-index:3;right:8%;top:10%;width:35%;height:43%;
+  border:8px solid rgba(245,249,255,.94);border-radius:22px;overflow:hidden;
+  box-shadow:0 18px 45px rgba(0,0,0,.28);background:#18304c;
+}
+.window-scene img{width:100%;height:100%;object-fit:cover}
+.window-glass{
+  position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.32),transparent 30%,rgba(21,72,199,.12));
+}
+.hero-badge{
+  position:absolute;z-index:4;left:-24px;bottom:44px;padding:16px 18px;border-radius:18px;
+  background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 20px 50px rgba(15,32,65,.14);backdrop-filter:blur(16px);
+}
+.hero-badge strong{display:block;font-size:18px}.hero-badge span{font-size:11px;color:var(--muted);font-weight:700}
+.hero-route{
+  position:absolute;z-index:4;right:-10px;bottom:22px;padding:13px 15px;border-radius:14px;
+  background:#12264b;color:#fff;box-shadow:0 16px 38px rgba(15,32,65,.2);font-size:12px;font-weight:800;
+}
+/* SECTIONS */
+.section-head{margin-bottom:45px}
+.section-head.center{text-align:center}
+.section-head.center .lead{margin:15px auto 0}
+.grid{display:grid;gap:18px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.light{background:#fff}.soft{background:#f2f5fa}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:27px;box-shadow:0 12px 35px rgba(21,32,51,.05);transition:.4s}
+.card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.photo{border-radius:30px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1}
+.photo img{width:100%;height:100%;object-fit:cover}
+.points{display:grid;gap:13px;margin-top:25px}.points div{display:flex;gap:12px;align-items:center;font-weight:700}
+.tick{width:28px;height:28px;border-radius:50%;background:#e9f8f5;color:#12978d;display:grid;place-items:center}
+.stat{padding:24px;text-align:center}.stat strong{font-size:40px;color:var(--blue)}.stat span{display:block;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em}
+.route{position:relative;overflow:hidden}.route .route-line{height:3px;background:linear-gradient(90deg,var(--blue),var(--cyan));margin:22px 0;border-radius:3px}
+.route-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+.fleet-img{height:190px;margin:-27px -27px 22px;overflow:hidden}.fleet-img img{width:100%;height:100%;object-fit:cover;transition:.5s}.card:hover .fleet-img img{transform:scale(1.06)}
+.features{display:grid;gap:8px;margin-top:15px}.features span{font-size:13px;color:var(--muted)}
+.service-icon{width:52px;height:52px;border-radius:16px;background:#edf3ff;color:var(--blue);display:grid;place-items:center;font-size:23px;margin-bottom:18px}
+.map{min-height:450px;border-radius:30px;background:
+ radial-gradient(circle at 25% 25%,#c9dfff 0 2px,transparent 3px),
+ linear-gradient(135deg,#f5f8ff,#e7eef8);position:relative;overflow:hidden;border:1px solid var(--line)}
+.map:before{content:"";position:absolute;inset:18% 12%;border:3px dashed #9fb7d8;border-radius:45% 55% 38% 62%;transform:rotate(-8deg)}
+.map-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 7px rgba(22,72,199,.12)}
+.map-label{position:absolute;font-weight:800;font-size:13px;background:#fff;padding:7px 10px;border-radius:9px;box-shadow:0 8px 20px rgba(21,32,51,.08)}
+.form-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.form{background:#fff;padding:32px;border-radius:28px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field.full{grid-column:1/-1}
+label{font-size:12px;font-weight:800;color:#4c586b;display:block;margin-bottom:7px}
+input,select,textarea{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:13px;background:#fafbfd;outline:none;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:#7fa1e9;box-shadow:0 0 0 4px rgba(22,72,199,.08)}
+textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
+.msg{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#e9f8f5;color:#137c73;font-weight:700;font-size:13px}.msg.show{display:block}
+.testimonial{display:flex;flex-direction:column;gap:16px}.stars{color:#e1a02e;letter-spacing:2px}
+.cta{padding:90px 30px;text-align:center;background:linear-gradient(135deg,#102e73,#1648c7 55%,#159aa4);color:#fff;border-radius:34px;box-shadow:var(--shadow)}
+.cta p{color:rgba(255,255,255,.78);max-width:570px;margin:16px auto 25px}
+.footer{background:#111827;color:#dbe3f0;padding:65px 0 20px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px}.footer h4{color:#fff;margin-bottom:15px}.footer a{color:#aebbd0;font-size:14px}.footer li{margin:8px 0}.footer-bottom{margin-top:45px;padding-top:18px;border-top:1px solid #263247;color:#8290a6;text-align:center;font-size:12px}
+
+
+/* POLISHED FLEET */
+.fleet-card{padding:0;overflow:hidden}
+.fleet-img{height:245px;margin:0;overflow:hidden;background:#dfe7f1}
+.fleet-img img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1)}
+.fleet-card:hover .fleet-img img{transform:scale(1.035)}
+.fleet-copy{padding:25px 27px 28px}
+.fleet-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--blue);font-weight:800}
+.fleet-copy h3{margin-top:8px}
+.fleet-copy p{color:var(--muted);font-size:14px;margin-top:9px}
+.features{margin-top:18px}
+
+/* INDIA NETWORK */
+.india-section{overflow:hidden}
+.india-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:45px}
+.india-head .lead{margin-top:17px;max-width:680px}
+.india-stat{min-width:220px;padding:20px 22px;border:1px solid var(--line);background:#fff;border-radius:18px;box-shadow:0 12px 35px rgba(21,32,51,.06)}
+.india-stat strong{display:block;font-family:"Playfair Display",serif;font-size:27px}
+.india-stat span{font-size:12px;color:var(--muted);font-weight:700}
+.india-network{display:grid;grid-template-columns:1.08fr .92fr;gap:24px;align-items:stretch}
+.india-map{min-height:600px;border-radius:32px;background:
+  radial-gradient(circle at 50% 38%,rgba(45,108,255,.10),transparent 38%),
+  linear-gradient(145deg,#fbfdff,#eaf1fb);
+  border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;
+  box-shadow:0 20px 60px rgba(21,32,51,.07)}
+.india-map-art{position:relative;width:min(92%,500px);height:560px}
+.india-map-art>img{position:absolute;inset:2% 9%;width:82%;height:94%;object-fit:contain;
+  filter:drop-shadow(0 20px 28px rgba(30,67,125,.13));opacity:.96}
+.india-map-art:after{content:"";position:absolute;inset:7% 13%;background:linear-gradient(145deg,rgba(224,235,255,.38),rgba(203,221,250,.10));clip-path:polygon(31% 0,53% 4%,63% 13%,72% 22%,81% 31%,76% 42%,84% 55%,73% 68%,66% 78%,56% 92%,47% 100%,39% 89%,31% 83%,23% 69%,17% 54%,20% 40%,13% 31%,19% 20%,22% 9%);mix-blend-mode:multiply;pointer-events:none}
+.india-route{position:absolute;height:3px;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--cyan));transform-origin:left center;opacity:.7;box-shadow:0 0 0 1px rgba(255,255,255,.45)}
+.route-a{left:43%;top:25%;width:180px;transform:rotate(39deg)}
+.route-b{left:43%;top:25%;width:235px;transform:rotate(103deg)}
+.route-c{left:43%;top:25%;width:260px;transform:rotate(147deg)}
+.india-marker{position:absolute;z-index:3;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800;color:#20304a;white-space:nowrap}
+.india-marker span{width:13px;height:13px;border-radius:50%;background:var(--blue);border:3px solid #fff;box-shadow:0 0 0 5px rgba(22,72,199,.12)}
+.m-delhi{left:40%;top:21%}.m-mumbai{left:24%;top:48%}.m-pune{left:27%;top:57%}
+.m-hyderabad{left:47%;top:61%}.m-bengaluru{left:43%;top:75%}.m-kolkata{left:69%;top:49%}
+.india-map-label{position:absolute;right:2%;top:4%;padding:8px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--blue);font-size:9px;letter-spacing:.12em;font-weight:800;box-shadow:0 8px 22px rgba(21,32,51,.07)}
+.destination-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.destination-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 12px 35px rgba(21,32,51,.05);transition:.35s ease}
+.destination-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.destination-card span{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--blue);font-weight:800}
+.destination-card strong{display:block;font-size:17px;margin-top:9px;line-height:1.35}
+.destination-card p{font-size:13px;color:var(--muted);margin-top:8px}
+.map-credit{margin-top:12px;text-align:right;font-size:10px;color:#8793a6}
+
+/* CTA */
+.cta-image{position:relative;overflow:hidden;min-height:390px;display:grid;place-items:center;padding:65px 30px;background:#112b58}
+.cta-image>img,.cta-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.cta-image>img{filter:brightness(.82) saturate(.82)}
+.cta-overlay{background:linear-gradient(110deg,rgba(7,18,38,.78),rgba(16,46,115,.70) 55%,rgba(14,122,139,.52))}
+.cta-content{position:relative;z-index:2}
+.cta-content .eyebrow{color:#b9d1ff}
+.cta-content h2{color:#fff}
+.cta-content p{color:rgba(255,255,255,.8)}
+.cta-content .btn-light{border:0}
+
+/* responsive */
+@media(max-width:900px){
+  .nav-links,.nav-actions .btn-light{display:none}.menu-btn{display:grid;place-items:center}
+  .hero{padding:112px 0 65px;min-height:auto}
+  .hero-grid{grid-template-columns:1fr;gap:42px}
+  .hero-copy{max-width:720px}
+  .hero-visual{min-height:450px}
+  .hero-badge{left:0}
+  .hero-route{right:0}
+  .g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}
+  .about-grid,.form-wrap{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .india-head{align-items:start;flex-direction:column}
+  .india-network{grid-template-columns:1fr}
+  .india-map{min-height:500px}
+}
+@media(max-width:620px){
+  .container{width:min(var(--max),calc(100% - 28px))}
+  .section{padding:78px 0}
+  .hero{padding-top:102px}
+  .hero-copy h1{font-size:clamp(43px,12vw,72px)}
+  .hero-actions{flex-direction:column}.hero-actions .btn{width:100%}
+  .hero-visual{min-height:330px}
+  .hero-bus-card{border-width:5px;border-radius:24px}
+  .window-scene{right:6%;top:9%;width:37%;height:40%;border-width:5px;border-radius:14px}
+  .hero-badge{left:8px;bottom:14px;padding:12px 13px}.hero-badge strong{font-size:14px}.hero-badge span{font-size:10px}
+  .hero-route{right:8px;bottom:8px;font-size:10px;padding:10px 11px}
+  .g2,.g3,.g4{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}
+  .photo{aspect-ratio:4/3}.footer-grid{grid-template-columns:1fr}
+  .destination-list{grid-template-columns:1fr}
+  .india-map{min-height:430px}.india-map-art{height:400px}.india-marker{font-size:9px}.india-marker span{width:11px;height:11px}.route-a{width:135px}.route-b{width:175px}.route-c{width:190px}
+  .cta-image{min-height:420px;padding:55px 22px}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+ .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-row">
+    <a class="brand" href="#home"><img class="brand-logo" src="logo1.jpeg" alt="Amar Travels logo"><span>AMAR TRAVELS<small>HAPPY JOURNEY </small></span></a>
+    <nav class="nav-links">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#routes">Routes</a><a href="#fleet">Fleet</a><a href="#services">Services</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions"><a class="btn btn-primary" href="#booking">Book Journey</a><button class="menu-btn" id="menuBtn">☰</button></div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Home</a><a href="#about">About</a><a href="#routes">Routes</a><a href="#fleet">Fleet</a><a href="#services">Services</a><a href="#booking">Booking</a><a href="#contact">Contact</a>
+</div>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy reveal">
+      <div class="eyebrow">Premium intercity travel across India</div>
+      <h1>Your Journey.<br><span>Our Road.</span></h1>
+      <p class="lead">Comfortable coaches, professional service and a connected network built to make every long-distance journey feel effortless.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking">Book Your Journey →</a>
+        <a class="btn btn-light" href="#routes">Explore Routes</a>
+      </div>
+      <div class="hero-note">✓ Comfortable coaches &nbsp; · &nbsp; ✓ Reliable long-distance travel &nbsp; · &nbsp; ✓ India-wide connectivity</div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-bus-card">
+        <img src="https://cdn.open-pr.com/V/c/Vc01885937_g.jpg" alt="Premium intercity coach on an Indian road">
+        <div class="window-scene">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=90&w=900&auto=format&fit=crop" alt="Scenic travel view through a bus window">
+          <div class="window-glass"></div>
+        </div>
+        <div class="hero-route">DELHI → JAIPUR<br><span style="opacity:.7;font-weight:600">Comfort • 5h approx.</span></div>
+      </div>
+      <div class="hero-badge"><strong>Made for the long road</strong><span>Premium travel, thoughtfully designed.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section light" id="about">
+<div class="container about-grid">
+  <div class="photo reveal"><img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1400&auto=format&fit=crop" alt="Luxury coach travel" loading="lazy"></div>
+  <div class="reveal"><div class="eyebrow">About Amar Travels</div><h2>Travel should feel like part of the <i>destination.</i></h2><p class="lead" style="margin-top:18px">We bring together comfortable coaches, professional drivers and a premium travel experience so every mile feels easy.</p>
+    <div class="points"><div><span class="tick">✓</span>Comfort-first luxury coaches</div><div><span class="tick">✓</span>Experienced professional drivers</div><div><span class="tick">✓</span>Reliable long-distance journeys</div><div><span class="tick">✓</span>Passenger-focused support</div></div>
+  </div>
+</div>
+<div class="container grid g4" style="margin-top:60px">
+  <div class="card stat reveal"><strong>10+</strong><span>Years Experience</span></div><div class="card stat reveal"><strong>100K+</strong><span>Happy Passengers</span></div><div class="card stat reveal"><strong>50+</strong><span>Routes</span></div><div class="card stat reveal"><strong>24/7</strong><span>Travel Support</span></div>
+</div>
+</section>
+
+<section class="section soft" id="routes">
+<div class="container"><div class="section-head center reveal"><div class="eyebrow">Popular Routes</div><h2>Pick a road. <i>We’ll handle the journey.</i></h2><p class="lead">Premium intercity routes with comfortable coaches and flexible enquiry support.</p></div>
+<div class="grid g3" id="routesGrid"></div></div>
+</section>
+
+<section class="section light" id="fleet">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Built for the long road</div>
+      <h2>Comfort that travels with you.</h2>
+      <p class="lead">A premium fleet experience designed around comfort, safety and effortless travel.</p>
+    </div>
+    <div class="grid g3 fleet-grid">
+      <article class="card fleet-card reveal">
+        <div class="fleet-img"><img src="https://dakobus.it/en/wp-content/uploads/2024/08/calypso-35-loc.png" alt="Modern luxury coach" loading="lazy"></div>
+        <div class="fleet-copy"><span class="fleet-kicker">01 · Executive</span><h3>Executive Coach</h3><p>Spacious seating, climate control and refined onboard comfort for day journeys.</p><div class="features"><span>✓ AC · Recliner Seats</span><span>✓ Charging Ports</span><span>✓ GPS & Safety Systems</span></div></div>
+      </article>
+      <article class="card fleet-card reveal">
+        <div class="fleet-img"><img src="https://gst-contracts.s3.ap-southeast-1.amazonaws.com/uploads/bcc/cms/asset/avatar/506793/abt1.jpg" alt="Premium coach travelling on a highway" loading="lazy"></div>
+        <div class="fleet-copy"><span class="fleet-kicker">02 · Sleeper</span><h3>Luxury Sleeper</h3><p>Designed for overnight routes with a calmer, more private travel experience.</p><div class="features"><span>✓ Sleeper Berths</span><span>✓ Reading Lights</span><span>✓ Clean Premium Cabin</span></div></div>
+      </article>
+      <article class="card fleet-card reveal">
+        <div class="fleet-img"><img src="https://www.scania.com/content/dam/www/market/my/22174-007.jpg" alt="Premium passenger coach" loading="lazy"></div>
+        <div class="fleet-copy"><span class="fleet-kicker">03 · Private</span><h3>Private Group Coach</h3><p>Flexible group transportation for families, tours, celebrations and corporate teams.</p><div class="features"><span>✓ Group & Corporate Travel</span><span>✓ Flexible Booking</span><span>✓ Professional Crew</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section soft india-section">
+  <div class="container">
+    <div class="india-head reveal">
+      <div>
+        <div class="eyebrow">Own network, many destinations</div>
+        <h2>One network.<br><i>Many destinations.</i></h2>
+        <p class="lead">A connected travel network designed to link major cities across North, West, South and East India — making long-distance journeys simpler and more comfortable.</p>
+      </div>
+      <div class="india-stat"><strong>Across India</strong><span>Major cities & long-distance corridors</span></div>
+    </div>
+
+    <div class="india-network reveal">
+      <div class="india-map">
+        <div class="india-map-art">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/India_outline.svg"
+            alt="Outline map of India showing the national shape"
+            loading="lazy">
+          <div class="india-route route-a"></div>
+          <div class="india-route route-b"></div>
+          <div class="india-route route-c"></div>
+          <div class="india-marker m-delhi"><span></span><b>Delhi</b></div>
+          <div class="india-marker m-mumbai"><span></span><b>Mumbai</b></div>
+          <div class="india-marker m-pune"><span></span><b>Pune</b></div>
+          <div class="india-marker m-bengaluru"><span></span><b>Bengaluru</b></div>
+          <div class="india-marker m-hyderabad"><span></span><b>Hyderabad</b></div>
+          <div class="india-marker m-kolkata"><span></span><b>Kolkata</b></div>
+          <div class="india-map-label">PAN-INDIA CONNECTIVITY</div>
+        </div>
+      </div>
+
+      <div class="destination-list">
+        <div class="destination-card"><span>North</span><strong>Delhi · Chandigarh · Amritsar · Jaipur</strong><p>Gateway cities and northern travel corridors.</p></div>
+        <div class="destination-card"><span>West</span><strong>Mumbai · Pune</strong><p>Business, leisure and intercity connections.</p></div>
+        <div class="destination-card"><span>South</span><strong>Bengaluru · Hyderabad</strong><p>Long-distance routes designed for comfortable travel.</p></div>
+        <div class="destination-card"><span>East</span><strong>Kolkata & beyond</strong><p>Major eastern destinations connected to the network.</p></div>
+      </div>
+    </div>
+
+    <div class="map-credit">Map outline: Wikimedia Commons · CC BY-SA 3.0</div>
+  </div>
+</section>
+
+<section class="section light" id="services">
+<div class="container"><div class="section-head center reveal"><div class="eyebrow">Travel Services</div><h2>More than a bus ride.</h2></div>
+<div class="grid g4">
+ <div class="card reveal"><div class="service-icon">🚌</div><h3>Intercity Travel</h3><p style="color:var(--muted);margin-top:8px">Comfortable scheduled journeys between major destinations.</p></div>
+ <div class="card reveal"><div class="service-icon">🏢</div><h3>Corporate Travel</h3><p style="color:var(--muted);margin-top:8px">Reliable group transportation for teams and events.</p></div>
+ <div class="card reveal"><div class="service-icon">👥</div><h3>Group Booking</h3><p style="color:var(--muted);margin-top:8px">Private coaches for families, tours and occasions.</p></div>
+ <div class="card reveal"><div class="service-icon">✈️</div><h3>Airport Transfers</h3><p style="color:var(--muted);margin-top:8px">Simple, comfortable point-to-point transfers.</p></div>
+</div></div>
+</section>
+
+<section class="section soft" id="why">
+<div class="container"><div class="section-head center reveal"><div class="eyebrow">Why Amar Travels</div><h2>Comfort you can <i>count on.</i></h2></div>
+<div class="grid g4"><div class="card reveal"><h3>Safe Travel</h3><p style="color:var(--muted);margin-top:8px">Professional drivers and safety-first operations.</p></div><div class="card reveal"><h3>On-Time Service</h3><p style="color:var(--muted);margin-top:8px">Journey planning built around dependable schedules.</p></div><div class="card reveal"><h3>Clean Fleet</h3><p style="color:var(--muted);margin-top:8px">Comfortable, well-presented coaches for every trip.</p></div><div class="card reveal"><h3>Live Support</h3><p style="color:var(--muted);margin-top:8px">A travel desk ready to help before and during your journey.</p></div></div></div>
+</section>
+
+<section class="section light" id="booking">
+<div class="container form-wrap">
+ <div class="reveal"><div class="eyebrow">Book / Enquire</div><h2>Tell us where you’re going.</h2><p class="lead" style="margin-top:18px">Send your journey details and the Amar Travels desk can follow up with availability and booking information.</p><div style="margin-top:25px" class="card"><b>Tip</b><p style="color:var(--muted);margin-top:6px">Choose a route above to automatically fill the From and To fields.</p></div></div>
+ <form class="form reveal" id="bookingForm">
+  <div class="fields">
+   <div class="field"><label>Full Name</label><input required name="name" placeholder="Your name"></div>
+   <div class="field"><label>Phone</label><input required name="phone" inputmode="tel" placeholder="+91"></div>
+   <div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@example.com"></div>
+   <div class="field"><label>Passengers</label><input required name="passengers" type="number" min="1" placeholder="Number of passengers"></div>
+   <div class="field"><label>From</label><input required id="from" name="from" placeholder="Departure city"></div>
+   <div class="field"><label>To</label><input required id="to" name="to" placeholder="Destination city"></div>
+   <div class="field"><label>Travel Date</label><input type="date" name="date"></div>
+   <div class="field full"><label>Message</label><textarea name="message" placeholder="Tell us anything important about your journey..."></textarea></div>
+  </div>
+  <button class="btn btn-primary" type="submit">Send Enquiry →</button><div class="msg" id="msg">Thank you! Your enquiry details are ready. Amar Travels can contact you shortly.</div>
+ </form>
+</div>
+</section>
+
+<section class="section soft">
+<div class="container"><div class="section-head center reveal"><div class="eyebrow">Traveller Stories</div><h2>Loved by travellers.</h2></div>
+<div class="grid g3">
+ <div class="card testimonial reveal"><div class="stars">★★★★★</div><p>“Excellent service and a very comfortable journey.”</p><b>Rohit Malhotra · Chandigarh</b></div>
+ <div class="card testimonial reveal"><div class="stars">★★★★★</div><p>“Clean coach, professional staff and a smooth travel experience.”</p><b>Priya Sharma · Delhi</b></div>
+ <div class="card testimonial reveal"><div class="stars">★★★★★</div><p>“Punctual, safe and genuinely comfortable for family travel.”</p><b>Sunita Rao · Mumbai</b></div>
+</div></div>
+</section>
+
+<section class="section light">
+<div class="container"><div class="cta reveal"><h2>Ready for your <i>next journey?</i></h2><p>Book your route and make the road part of the experience.</p><a class="btn btn-light" href="#booking">Book Your Journey →</a></div></div>
+</section>
+
+<section class="section soft" id="contact">
+<div class="container"><div class="section-head center reveal"><div class="eyebrow">Reach Us</div><h2>Contact Amar Travels.</h2></div>
+<div class="grid g4">
+ <div class="card reveal"><h3>Call Us</h3><p style="color:var(--muted);margin-top:8px">+91 XXXXX XXXXX</p></div>
+ <div class="card reveal"><h3>Email</h3><p style="color:var(--muted);margin-top:8px">your-email@gmail.com</p></div>
+ <div class="card reveal"><h3>WhatsApp</h3><p style="color:var(--muted);margin-top:8px">Travel desk chat</p></div>
+ <div class="card reveal"><h3>Office</h3><p style="color:var(--muted);margin-top:8px">Your Office Address, India</p></div>
+</div></div>
+</section>
+</main>
+
+<footer class="footer">
+<div class="container">
+ <div class="footer-grid">
+  <div><a class="brand" href="#home"><img class="brand-logo" src="amar_travels_blue_white_logo.png" alt="Amar Travels logo"><span style="color:#fff">AMAR TRAVELS<small style="color:#7ca5ff">SAFAR SUHANA HO</small></span></a><p style="margin-top:15px;color:#9aa9bf;max-width:330px">Luxury journeys. Endless destinations. A premium intercity travel experience.</p></div>
+  <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#routes">Routes</a></li><li><a href="#fleet">Fleet</a></li></ul></div>
+  <div><h4>Services</h4><ul><li><a href="#services">Intercity Travel</a></li><li><a href="#services">Group Booking</a></li><li><a href="#services">Corporate Travel</a></li></ul></div>
+  <div><h4>Support</h4><ul><li><a href="#booking">Travel Enquiry</a></li><li><a href="#contact">Contact</a></li><li><a href="#home">Back to top</a></li></ul></div>
+ </div>
+ <div class="footer-bottom">© 2026 Amar Travels. All Rights Reserved.</div>
+</div>
+</footer>
+
+<script>
+(() => {
+  const nav=document.getElementById('nav');
+  const menu=document.getElementById('mobileMenu');
+  const menuBtn=document.getElementById('menuBtn');
+
+  menuBtn.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+  const routeData=[
+    ['Chandigarh','Vrindavan','≈ 9h','Overnight departure','Luxury Coach'],
+    ['Delhi','Kolkata','≈ 20h','Daily departures','Sleeper Coach'],
+    ['Delhi','Jaipur','≈ 5h','Multiple daily trips','Volvo Coach'],
+    ['Chandigarh','Delhi','≈ 5h','Multiple daily trips','Luxury Coach'],
+    ['Mumbai','Pune','≈ 3.5h','Hourly departures','Luxury Recliner'],
+    ['Bengaluru','Hyderabad','≈ 8h','Evening departures','Sleeper Coach'],
+    ['Lucknow','Delhi','≈ 7h','Daily departures','Volvo Coach'],
+    ['Amritsar','Chandigarh','≈ 4h','Multiple daily trips','Luxury Coach']
+  ];
+
+  document.getElementById('routesGrid').innerHTML=routeData.map(r=>`
+    <article class="card route reveal">
+      <small style="color:var(--blue);font-weight:800">${r[4]}</small>
+      <h3 style="margin-top:10px">${r[0]}</h3><div class="route-line"></div><h3>${r[1]}</h3>
+      <div class="route-meta"><span>${r[2]}</span><span>${r[3]}</span></div>
+      <a class="btn btn-light route-select" style="width:100%;margin-top:18px" href="#booking" data-from="${r[0]}" data-to="${r[1]}">Book this route →</a>
+    </article>`).join('');
+
+  document.querySelectorAll('.route-select').forEach(b=>b.addEventListener('click',()=>{
+    document.getElementById('from').value=b.dataset.from;
+    document.getElementById('to').value=b.dataset.to;
+  }));
+
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('show')
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const sectionLinks=[...document.querySelectorAll('.nav-links a')];
+  const sectionObserver=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting)sectionLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));
+  }),{rootMargin:'-45% 0px -45% 0px'});
+  document.querySelectorAll('main section[id]').forEach(s=>sectionObserver.observe(s));
+
+  document.getElementById('bookingForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    document.getElementById('msg').classList.add('show');
+    e.target.querySelector('button').textContent='Enquiry Sent ✓';
+  });
+})();
+</script>
+</body>
+</html>
