@@ -456,7 +456,8 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
    <div class="field"><label>Travel Date</label><input type="date" name="date"></div>
    <div class="field full"><label>Message</label><textarea name="message" placeholder="Tell us anything important about your journey..."></textarea></div>
   </div>
-  <button class="btn btn-primary" type="submit">Send Enquiry →</button><div class="msg" id="msg">Thank you! Your enquiry details are ready. Amar Travels can contact you shortly.</div>
+  <button class="btn btn-primary" type="submit">Send Enquiry →</button>
+   <a class="btn btn-light" href="#" id="whatsappBookingBtn">Book on WhatsApp →</a><div class="msg" id="msg">Thank you! Your enquiry details are ready. Amar Travels can contact you shortly.</div>
  </form>
 </div>
 </section>
@@ -556,6 +557,34 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
 
   const bookingForm=document.getElementById('bookingForm');
   const msgBox=document.getElementById('msg');
+
+  document.getElementById('whatsappBookingBtn').addEventListener('click',(e)=>{
+    e.preventDefault();
+    if(!bookingForm.reportValidity()) return;
+
+    const data = Object.fromEntries(new FormData(bookingForm).entries());
+    const whatsappMessage =
+`Hello Amar Travels,
+
+I want to book a journey.
+
+Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email}
+From: ${data.from}
+To: ${data.to}
+Date: ${data.date || 'Not specified'}
+Passengers: ${data.passengers}
+
+Message: ${data.message || 'No additional message'}`;
+
+    window.open(
+      'https://wa.me/919991535961?text=' + encodeURIComponent(whatsappMessage),
+      '_blank',
+      'noopener,noreferrer'
+    );
+  });
+
   bookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn=bookingForm.querySelector('button[type="submit"]');
@@ -577,6 +606,29 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
         msgBox.textContent='Thank you! Your enquiry has been sent. Amar Travels will contact you shortly.';
         msgBox.classList.add('show');
         btn.textContent='Enquiry Sent ✓';
+
+        const data = Object.fromEntries(new FormData(bookingForm).entries());
+        const whatsappMessage =
+`Hello Amar Travels,
+
+I want to book a journey.
+
+Name: ${data.name}
+Phone: ${data.phone}
+Email: ${data.email}
+From: ${data.from}
+To: ${data.to}
+Date: ${data.date || 'Not specified'}
+Passengers: ${data.passengers}
+
+Message: ${data.message || 'No additional message'}`;
+
+        window.open(
+          'https://wa.me/919991535961?text=' + encodeURIComponent(whatsappMessage),
+          '_blank',
+          'noopener,noreferrer'
+        );
+
         bookingForm.reset();
       } else {
         throw new Error(result.message || 'Something went wrong');
