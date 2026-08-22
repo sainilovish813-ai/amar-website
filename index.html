@@ -222,7 +222,114 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
 .cta{padding:90px 30px;text-align:center;background:linear-gradient(135deg,#102e73,#1648c7 55%,#159aa4);color:#fff;border-radius:34px;box-shadow:var(--shadow)}
 .cta p{color:rgba(255,255,255,.78);max-width:570px;margin:16px auto 25px}
 .contact-grid{grid-template-columns:repeat(5,1fr)}
-.footer{background:#111827;color:#dbe3f0;padding:65px 0 20px}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:35px}.footer h4{color:#fff;margin-bottom:15px}.footer a{color:#aebbd0;font-size:14px}.footer li{margin:8px 0}.footer-bottom{margin-top:45px;padding-top:18px;border-top:1px solid #263247;color:#8290a6;text-align:center;font-size:12px}
+
+/* PREMIUM FOOTER — desktop + mobile */
+.footer{position:relative;overflow:hidden;background:#03101f;color:#dce5f2;padding:42px 0 0;border-top:1px solid rgba(255,255,255,.04)}
+.footer:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 0%,rgba(22,72,199,.11),transparent 30%),radial-gradient(circle at 88% 70%,rgba(225,160,46,.06),transparent 28%);pointer-events:none}
+.footer .container{position:relative;z-index:1}
+.footer-cta{display:grid;grid-template-columns:1.35fr .95fr;gap:30px;align-items:center;min-height:170px;padding:28px 34px;border:1px solid rgba(128,171,231,.16);border-radius:22px;background:linear-gradient(110deg,rgba(7,23,43,.96),rgba(8,29,53,.9));box-shadow:0 20px 60px rgba(0,0,0,.18);overflow:hidden;position:relative}
+.footer-cta:after{content:"";position:absolute;right:-30px;top:-80px;width:360px;height:260px;background:radial-gradient(circle,rgba(225,160,46,.08),transparent 65%);pointer-events:none}
+.footer-cta-copy{display:flex;align-items:center;gap:24px;position:relative;z-index:1}
+.footer-cta-icon{width:84px;height:84px;display:grid;place-items:center;border-radius:20px;background:rgba(11,31,54,.75);border:1px solid rgba(225,160,46,.18);color:#e1a02e;flex:0 0 84px}
+.footer-cta-icon svg{width:58px;height:58px}
+.footer-cta h2{font-family:"Playfair Display",serif;font-size:34px;line-height:1.1;color:#fff;margin:0}
+.footer-cta p{margin-top:10px;color:#aebbd0;font-size:16px;line-height:1.7;max-width:620px}
+.footer-cta-action{display:flex;align-items:center;justify-content:flex-end;gap:18px;padding-left:28px;border-left:1px solid rgba(255,255,255,.09);position:relative;z-index:1}
+.footer-help-icon{width:56px;height:56px;color:#e1a02e;flex:0 0 56px}
+.footer-cta-action h3{color:#fff;font-family:"Playfair Display",serif;font-size:22px;margin:0}
+.footer-cta-action p{color:#aebbd0;margin:6px 0 16px}
+.footer-connect{display:inline-flex;align-items:center;gap:10px;border:1px solid #e1a02e;color:#f4b42f;background:transparent;padding:12px 20px;border-radius:999px;font-weight:800;font-size:14px;transition:.25s ease}
+.footer-connect:hover{background:#e1a02e;color:#071321;transform:translateY(-2px)}
+.footer-main{display:grid;grid-template-columns:1.35fr .8fr .8fr .8fr 1.15fr;gap:42px;padding:58px 0 45px}
+.footer-brand-copy{max-width:350px;color:#aebbd0;line-height:1.75;margin-top:16px}
+.footer-brand-copy strong{color:#fff}
+.footer .brand{width:max-content}
+.footer .brand-logo{width:72px;height:54px}
+.footer .brand>span{color:#fff!important}
+.footer .brand small{color:#78adff!important}
+.footer-socials{display:flex;gap:12px;margin-top:22px}
+.footer-social{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#0b1a2d;border:1px solid rgba(255,255,255,.05);color:#fff;transition:.25s ease}
+.footer-social:hover{transform:translateY(-3px);border-color:rgba(225,160,46,.45);color:#e1a02e}
+.footer-social svg{width:18px;height:18px;fill:currentColor}
+.footer-col h4{font-size:17px;color:#fff;margin:0 0 14px;font-weight:800}
+.footer-col h4:after{content:"";display:block;width:34px;height:2px;background:#e1a02e;margin-top:10px}
+.footer-col ul{list-style:none;padding:0;margin:0}
+.footer-col li{margin:12px 0}
+.footer-col a{color:#aebbd0;font-size:14px;display:inline-flex;align-items:center;gap:9px;transition:.2s ease}
+.footer-col a:before{content:"›";color:#e1a02e;font-size:20px;line-height:0;transform:translateY(-1px)}
+.footer-col a:hover{color:#fff;transform:translateX(3px)}
+.footer-confidence{padding-left:34px;border-left:1px solid rgba(255,255,255,.08)}
+.footer-confidence h3{font-family:"Playfair Display",serif;font-size:22px;color:#fff;margin:0}
+.footer-confidence h3:after{content:"";display:block;width:34px;height:2px;background:#e1a02e;margin-top:15px}
+.confidence-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 18px;margin-top:24px}
+.confidence-item{display:grid;grid-template-columns:54px 1fr;gap:12px;align-items:center}
+.confidence-icon{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#0b1a2d;color:#e1a02e}
+.confidence-icon svg{width:28px;height:28px}
+.confidence-item span{font-size:13px;color:#b9c5d6;line-height:1.55}
+.footer-india{border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);min-height:145px;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
+.footer-route-art{height:145px;flex:1;max-width:760px;opacity:.48;color:#dca13a}
+.footer-india-copy{min-width:300px;padding-right:25px}
+.footer-india-copy strong{display:block;color:#e1a02e;font-size:17px;margin-bottom:7px}
+.footer-india-copy span{font-size:13px;color:#aebbd0}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:22px 0 26px;color:#93a2b6;font-size:13px}
+.footer-values{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-values span{display:inline-flex;align-items:center;gap:20px;color:#aebbd0}
+.footer-values span:not(:last-child):after{content:"";width:4px;height:4px;border-radius:50%;background:#e1a02e}
+.footer-mountain{position:absolute;right:-10px;bottom:-18px;width:240px;height:70px;opacity:.16}
+.footer-accordion-btn{display:none}
+.footer-col-content{display:block}
+
+@media(max-width:900px){
+  .footer-main{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-confidence{padding-left:0;border-left:0}
+  .footer-cta{grid-template-columns:1fr;gap:20px}
+  .footer-cta-action{justify-content:flex-start;border-left:0;border-top:1px solid rgba(255,255,255,.08);padding:18px 0 0}
+  .footer-india-copy{min-width:240px}
+}
+@media(max-width:620px){
+  .footer{padding-top:20px}
+  .footer-cta{min-height:auto;padding:22px 18px;border-radius:18px}
+  .footer-cta-copy{align-items:flex-start;gap:14px}
+  .footer-cta-icon{width:58px;height:58px;flex-basis:58px;border-radius:15px}
+  .footer-cta-icon svg{width:40px;height:40px}
+  .footer-cta h2{font-size:27px}
+  .footer-cta p{font-size:13px;line-height:1.55;margin-top:7px}
+  .footer-cta-action{gap:12px}
+  .footer-help-icon{width:46px;height:46px;flex-basis:46px}
+  .footer-cta-action h3{font-size:18px}
+  .footer-cta-action p{font-size:12px;margin-bottom:12px}
+  .footer-connect{padding:10px 15px;font-size:13px}
+  .footer-main{display:block;padding:30px 0 20px}
+  .footer-brand-copy{font-size:13px;max-width:none}
+  .footer .brand-logo{width:58px;height:44px}
+  .footer-socials{margin-top:17px}
+  .footer-social{width:40px;height:40px}
+  .footer-col,.footer-confidence{border-top:1px solid rgba(255,255,255,.09);padding:0;margin-top:14px}
+  .footer-col:first-of-type{margin-top:28px}
+  .footer-accordion-btn{display:flex;width:100%;align-items:center;justify-content:space-between;background:none;border:0;color:#fff;padding:20px 0;font-size:17px;font-weight:800;text-align:left;cursor:pointer}
+  .footer-accordion-btn .chevron{font-size:25px;font-weight:400;transition:transform .25s ease;color:#fff}
+  .footer-col.open .footer-accordion-btn .chevron,.footer-confidence.open .footer-accordion-btn .chevron{transform:rotate(180deg)}
+  .footer-col-content{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease}
+  .footer-col-content>div{overflow:hidden}
+  .footer-col.open .footer-col-content,.footer-confidence.open .footer-col-content{grid-template-rows:1fr;padding-bottom:9px}
+  .footer-col-content ul{padding-bottom:8px}
+  .footer-confidence{padding-left:0}
+  .confidence-grid{padding:0 0 12px;margin-top:0;gap:14px}
+  .confidence-item{grid-template-columns:45px 1fr;gap:10px}
+  .confidence-icon{width:45px;height:45px}
+  .confidence-icon svg{width:23px;height:23px}
+  .confidence-item span{font-size:12px}
+  .footer-india{min-height:120px;display:block;padding:18px 0}
+  .footer-route-art{height:70px;width:100%;max-width:none}
+  .footer-india-copy{padding:0;min-width:0}
+  .footer-india-copy strong{font-size:15px}
+  .footer-india-copy span{font-size:12px}
+  .footer-bottom{display:block;padding:20px 0 24px;font-size:12px}
+  .footer-values{margin-top:14px;gap:11px}
+  .footer-values span{gap:11px}
+  .footer-mountain{width:170px;height:50px;bottom:-10px;opacity:.1}
+}
+
 
 
 /* POLISHED FLEET */
@@ -587,13 +694,114 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
 
 <footer class="footer">
 <div class="container">
- <div class="footer-grid">
-  <div><a class="brand" href="#home"><img class="brand-logo" src="logo3.png" alt="Amar Travels logo"><span style="color:#fff">AMAR TRAVELS<small style="color:#7ca5ff">HAPPY JOURNEY</small></span></a><p style="margin-top:15px;color:#9aa9bf;max-width:330px">Luxury journeys. Endless destinations. A premium intercity travel experience.</p></div>
-  <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#routes">Routes</a></li><li><a href="#fleet">Fleet</a></li></ul></div>
-  <div><h4>Services</h4><ul><li><a href="#services">Intercity Travel</a></li><li><a href="#services">Group Booking</a></li><li><a href="#services">Corporate Travel</a></li></ul></div>
-  <div><h4>Support</h4><ul><li><a href="#booking">Travel Enquiry</a></li><li><a href="#contact">Contact</a></li><li><a href="#home">Back to top</a></li></ul></div>
- </div>
- <div class="footer-bottom">© 2026 Amar Travels. All Rights Reserved.</div>
+  <div class="footer-cta">
+    <div class="footer-cta-copy">
+      <div class="footer-cta-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="10" y="16" width="34" height="38" rx="6" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M19 16v-4a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v4" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M20 25h14M20 32h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="43" cy="43" r="12" fill="#071321" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M43 35v8l5 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M50 12l-6 9 6-2 4 3 2-10-6 0Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Plan Your Perfect Journey</h2>
+        <p>Discover seamless intercity travel with comfort, safety &amp; reliability.</p>
+      </div>
+    </div>
+    <div class="footer-cta-action">
+      <svg class="footer-help-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="32" cy="32" r="23" stroke="currentColor" stroke-width="2.5"/>
+        <path d="M32 16v16l10 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 40c-4-3-6-8-5-13M43 24c4 3 6 8 5 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="3" fill="currentColor"/>
+      </svg>
+      <div>
+        <h3>Need Help Planning?</h3>
+        <p>Our travel experts are ready to assist you.</p>
+        <a class="footer-connect" href="#booking">Connect With Us <span>→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-main">
+    <div class="footer-brand-block">
+      <a class="brand" href="#home"><img class="brand-logo" src="logo3.png" alt="Amar Travels logo"><span>AMAR TRAVELS<small>HAPPY JOURNEY</small></span></a>
+      <p class="footer-brand-copy">Redefining intercity travel with luxury, punctuality and unmatched comfort. <strong>Your journey, our priority.</strong></p>
+      <div class="footer-socials" aria-label="Social links">
+        <a class="footer-social" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.6 1.7-1.6h1.8V3.8c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2V10H7.8v3h2.7v8h3Z"/></svg></a>
+        <a class="footer-social" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5ZM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></a>
+        <a class="footer-social" href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M5 4h4.1l3.1 4.4L15.9 4H19l-5.3 6.2L19.5 20h-4.1l-3.6-5-4.1 5H4.6l5.7-6.7L5 4Zm3.4 2 7.8 11.9h1.8L10.2 6H8.4Z"/></svg></a>
+        <a class="footer-social" href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.1a2.8 2.8 0 0 0-2-2C17.9 4.6 12 4.6 12 4.6s-5.9 0-7.6.5a2.8 2.8 0 0 0-2 2C2 8.8 2 12 2 12s0 3.2.4 4.9a2.8 2.8 0 0 0 2 2c1.7.5 7.6.5 7.6.5s5.9 0 7.6-.5a2.8 2.8 0 0 0 2-2C22 15.2 22 12 22 12s0-3.2-.4-4.9ZM10 15.5v-7l6 3.5-6 3.5Z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <button class="footer-accordion-btn" type="button">Explore <span class="chevron">⌄</span></button>
+      <div class="footer-col-content"><div>
+        <h4>Explore</h4><ul><li><a href="#about">About Us</a></li><li><a href="#routes">Routes</a></li><li><a href="#fleet">Fleet</a></li><li><a href="#routes">Offers &amp; Deals</a></li><li><a href="#routes">Travel Guide</a></li></ul>
+      </div></div>
+    </div>
+
+    <div class="footer-col">
+      <button class="footer-accordion-btn" type="button">Services <span class="chevron">⌄</span></button>
+      <div class="footer-col-content"><div>
+        <h4>Services</h4><ul><li><a href="#services">Intercity Travel</a></li><li><a href="#services">Group Booking</a></li><li><a href="#services">Corporate Travel</a></li><li><a href="#services">Charter Services</a></li><li><a href="#services">Event Transport</a></li></ul>
+      </div></div>
+    </div>
+
+    <div class="footer-col">
+      <button class="footer-accordion-btn" type="button">Support <span class="chevron">⌄</span></button>
+      <div class="footer-col-content"><div>
+        <h4>Support</h4><ul><li><a href="#booking">Travel Enquiry</a></li><li><a href="#contact">Contact Us</a></li><li><a href="#booking">FAQs</a></li><li><a href="#booking">Cancellation Policy</a></li><li><a href="#home">Back to top</a></li></ul>
+      </div></div>
+    </div>
+
+    <div class="footer-confidence">
+      <button class="footer-accordion-btn" type="button">Why Travel With Us? <span class="chevron">⌄</span></button>
+      <div class="footer-col-content"><div>
+        <h3>Travel With Confidence</h3>
+        <div class="confidence-grid">
+          <div class="confidence-item"><div class="confidence-icon"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 26 8v7c0 6.5-4.2 10.9-10 13-5.8-2.1-10-6.5-10-13V8l10-4Z" stroke="currentColor" stroke-width="2"/><path d="m11 16 3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Trusted<br>&amp; Reliable</span></div>
+          <div class="confidence-item"><div class="confidence-icon"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/><path d="M16 9v7l5 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><span>Premium<br>Experience</span></div>
+          <div class="confidence-item"><div class="confidence-icon"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2"/><path d="M8 20h4l2 3 4-9 2 3h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>On-Time<br>Every Time</span></div>
+          <div class="confidence-item"><div class="confidence-icon"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="10" r="4" stroke="currentColor" stroke-width="2"/><path d="M8 27c.5-5 3.2-8 8-8s7.5 3 8 8M6 14c2.5 0 4 1.4 4.5 4M26 14c-2.5 0-4 1.4-4.5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><span>Customer<br>First</span></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="footer-india">
+    <svg class="footer-route-art" viewBox="0 0 900 145" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <path d="M15 113H885" stroke="currentColor" stroke-opacity=".25"/>
+      <path d="M45 92C115 30 160 30 225 83S345 122 430 52s140-26 198 32 96 40 152-19" stroke="currentColor" stroke-width="1.4" stroke-dasharray="6 7" opacity=".65"/>
+      <g stroke="currentColor" stroke-width="1.8" opacity=".65">
+        <path d="M75 111V91l-12 13m12-7 12 7M60 111l15-20 15 20M57 111h36"/>
+        <path d="M202 111V86l-20 25m20-25 20 25M177 111h50"/>
+        <path d="M335 111V78l-17 33m17-33 17 33M309 111h52"/>
+        <path d="M466 111V72l-10 39m10-39 10 39M443 111h46"/>
+        <path d="M600 111V84l-15 27m15-27 15 27M576 111h48"/>
+        <path d="M735 111V76l-19 35m19-35 19 35M706 111h58"/>
+      </g>
+      <g fill="#e1a02e">
+        <circle cx="45" cy="92" r="4"/><circle cx="225" cy="83" r="4"/><circle cx="430" cy="52" r="4"/><circle cx="628" cy="84" r="4"/><circle cx="805" cy="65" r="4"/>
+      </g>
+      <g stroke="currentColor" stroke-width="1.4" opacity=".55">
+        <path d="M120 111v-34l-12 9 12-22 12 22-12-9v34M250 111V78l-10 10 10-20 10 20-10-10v33M515 111V82l-9 8 9-18 9 18-9-8v29M675 111V83l-11 9 11-20 11 20-11-9v28"/>
+      </g>
+    </svg>
+    <div class="footer-india-copy"><strong>Serving Across India</strong><span>Connecting cities. Connecting people.</span></div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Amar Travels. All Rights Reserved.</div>
+    <div class="footer-values"><span>Safe Journeys</span><span>Happy Journeys</span><span>Memorable Journeys</span></div>
+  </div>
+</div>
+<div class="footer-mountain" aria-hidden="true">
+  <svg viewBox="0 0 240 70" width="100%" height="100%" fill="none"><path d="M0 65 55 24l25 18L125 0l35 38 22-20 58 47H0Z" fill="#8090a8"/><path d="m118 5 9 20 11-8 9 17 13 4-15 8-11-14-11 11-12-19-9 8-6-7 22-20Z" fill="#c4cfdd" opacity=".55"/></svg>
 </div>
 </footer>
 
@@ -671,6 +879,11 @@ Message: ${data.message || 'No additional message'}`;
       '_blank',
       'noopener,noreferrer'
     );
+  });
+
+
+  document.querySelectorAll('.footer-accordion-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'));
   });
 
   bookingForm.addEventListener('submit', async (e) => {
