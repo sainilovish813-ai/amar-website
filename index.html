@@ -35,6 +35,72 @@ h3{font-size:25px}
 .btn-primary:disabled{opacity:.65;cursor:not-allowed;transform:none}
 .btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .btn-light:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+
+#whatsappBookingBtn{
+  width:auto;
+  min-height:64px;
+  margin-top:17px;
+  padding:10px 24px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  border:2px solid #25D366;
+  border-radius:999px;
+  background:#fff;
+  color:#168c4a;
+  font-size:18px;
+  font-weight:800;
+  box-shadow:none;
+  transition:.3s ease;
+}
+#whatsappBookingBtn:hover{
+  transform:translateY(-3px);
+  border-color:#20bd5b;
+  color:#168c4a;
+  box-shadow:0 14px 32px rgba(37,211,102,.14);
+}
+#whatsappBookingBtn .whatsapp-btn-icon{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  display:grid;
+  place-items:center;
+}
+#whatsappBookingBtn .whatsapp-btn-icon svg{
+  width:28px;
+  height:28px;
+}
+#whatsappBookingBtn .whatsapp-btn-arrow{
+  margin-left:2px;
+  font-size:24px;
+  line-height:1;
+}
+@media(max-width:620px){
+  #whatsappBookingBtn{
+    width:auto;
+    max-width:300px;
+    min-height:54px;
+    padding:6px 14px;
+    gap:9px;
+    font-size:15px;
+  }
+  #whatsappBookingBtn .whatsapp-btn-icon{
+    width:40px;
+    height:40px;
+    flex-basis:40px;
+  }
+  #whatsappBookingBtn .whatsapp-btn-icon svg{
+    width:23px;
+    height:23px;
+  }
+  #whatsappBookingBtn .whatsapp-btn-arrow{
+    font-size:20px;
+  }
+}
 .glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 60px rgba(15,32,65,.10);backdrop-filter:blur(18px)}
 .reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
 .reveal.show{opacity:1;transform:none}
@@ -457,7 +523,16 @@ textarea{min-height:120px;resize:vertical}.form button{margin-top:17px}
    <div class="field full"><label>Message</label><textarea name="message" placeholder="Tell us anything important about your journey..."></textarea></div>
   </div>
   <button class="btn btn-primary" type="submit">Send Enquiry →</button>
-   <a class="btn btn-light" href="#" id="whatsappBookingBtn">Book on WhatsApp →</a><div class="msg" id="msg">Thank you! Your enquiry details are ready. Amar Travels can contact you shortly.</div>
+   <a class="btn btn-light" href="#" id="whatsappBookingBtn">
+      <span class="whatsapp-btn-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.52 3.48A11.84 11.84 0 0 0 12.08 0C5.52 0 .18 5.34.18 11.9c0 2.1.55 4.15 1.6 5.96L.08 24l6.28-1.65a11.88 11.88 0 0 0 5.72 1.46h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.17-3.46-8.43Z" fill="currentColor"/>
+          <path d="M17.48 14.16c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.05 1.02-1.05 2.48s1.08 2.87 1.23 3.07c.15.2 2.12 3.24 5.14 4.54.72.31 1.28.49 1.72.63.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.35Z" fill="white"/>
+        </svg>
+      </span>
+      <span>Book on WhatsApp</span>
+      <span class="whatsapp-btn-arrow" aria-hidden="true">→</span>
+    </a><div class="msg" id="msg">Thank you! Your enquiry details are ready. Amar Travels can contact you shortly.</div>
  </form>
 </div>
 </section>
